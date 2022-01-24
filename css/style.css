@@ -1,0 +1,9 @@
+#app {
+    height: 100vh;
+    background-color: lightcoral;
+}
+
+.email-box {
+    border-radius: 20px;
+    background-color: #f8d069;
+}
