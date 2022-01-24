@@ -12,7 +12,8 @@
 <body>
     <div id="app">
         <h1>I 10 indirizzi email generati sono:</h1>
-        <div v-for="email in emailList">
+        <div v-if="emailList.length === 10" v-for="email in emailList">
+            <!-- aggiungendo la condizione "if" i 10 indizzi email verranno stampati in pagina solamente dopo esser stati tutti generati -->
             {{email}}
         </div>
     </div>
