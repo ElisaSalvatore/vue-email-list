@@ -3,16 +3,22 @@ new Vue({
     data: {
         emailList: [],
     },
-    methods: {
-        newEmail: function() {
-            for (let i=0; i<10; i++) {
-                axios.get(' https://flynn.boolean.careers/exercises/api/random/mail').then((email) => {
-                    this.emailList.push(email.data.response)
-                })
-            }
+    mounted: function() {
+        for (let i=0; i<10; i++) {
+            this.getEmail();
         }
     },
-    mounted: function() {
-        this.newEmail();
-    }
+    methods: {
+        getEmail: function() {
+            axios.get('https://flynn.boolean.careers/exercises/api/random/mail').then((email) => {
+                // this.emailList.push(email.data.response)
+                if (!this.emailList.includes(email.data.response)) {
+                    this.emailList.push(email.data.response)
+                } else {
+                    //l'email è duplicata
+                    this.getEmail();
+                }
+            });
+        },
+    },
 })
